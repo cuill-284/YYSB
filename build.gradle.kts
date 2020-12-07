@@ -4,6 +4,8 @@ buildscript {
     repositories {
         google()
         jcenter()
+        //阿里云
+        maven { setUrl("http://maven.aliyun.com/nexus/content/groups/public/") }
     }
     dependencies {
         classpath("com.android.tools.build:gradle:${KotlinConstants.gradle_version}")
@@ -18,7 +20,12 @@ allprojects {
     repositories {
         google()
         jcenter()
-        
+        maven { setUrl("https://jitpack.io") }
+        //阿里云
+        maven { setUrl("http://maven.aliyun.com/nexus/content/groups/public/") }
+        maven { setUrl("http://maven.aliyun.com/nexus/content/repositories/jcenter") }
+        maven { setUrl("http://maven.aliyun.com/nexus/content/repositories/google") }
+        maven { setUrl("http://maven.aliyun.com/nexus/content/repositories/gradle-plugin") }
     }
 }
 

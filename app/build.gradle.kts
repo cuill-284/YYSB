@@ -3,7 +3,7 @@ plugins {
     id("com.android.application")
     kotlin("android")
     kotlin("android.extensions")
-    /*kotlin("kapt")*/
+    kotlin("kapt")
 }
 
 //Android属性
@@ -16,6 +16,13 @@ android {
         targetSdkVersion(AppConfig.targetSdkVersion)
         versionCode = AppConfig.versionCode
         versionName = AppConfig.versionName
+
+        //ARouter
+        kapt {
+            arguments {
+                arg("AROUTER_MODULE_NAME", project.name)
+            }
+        }
     }
 
     //签名配置
@@ -35,6 +42,7 @@ android {
     //编译类型
     buildTypes {
         getByName("debug") {
+            isMinifyEnabled = true
 
         }
         getByName("release") {
@@ -73,8 +81,20 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
-    implementation(DependenciesConfig.STD_LIB)
-    implementation(DependenciesConfig.APP_COMPAT)
-    implementation(DependenciesConfig.KTX_CORE)
-    implementation(DependenciesConfig.CONSTRAINT_LAYOUT)
+    implementation(project(":lib_base"))
+
+    if (!ModuleConfig.isApp) {
+        implementation(project(":module_app_manager"))
+        /*implementation(project(":module_constellation"))
+        implementation(project(":module_developer"))
+        implementation(project(":module_joke"))
+        implementation(project(":module_map"))
+        implementation(project(":module_setting"))
+        implementation(project(":module_voice_setting"))
+        implementation(project(":module_weather"))*/
+    }
+
+    //运行时注解
+    kapt(DependenciesConfig.AROUTER_COMPILER)
+
 }

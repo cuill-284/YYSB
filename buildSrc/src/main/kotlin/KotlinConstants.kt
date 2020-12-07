@@ -61,3 +61,20 @@ object DependenciesConfig {
     //图表
     const val CHART = "com.github.PhilJay:MPAndroidChart:v3.1.0"
 }
+
+//Module配置
+object ModuleConfig {
+
+    //Module是否App
+    var isApp = false
+
+    //包名
+    const val MODULE_APP_MANAGER = "com.cll.module_app_manager"
+    const val MODULE_CONSTELLATION = "com.cll.module_constellation"
+    const val MODULE_DEVELOPER = "com.cll.module_developer"
+    const val MODULE_JOKE = "com.cll.module_joke"
+    const val MODULE_MAP = "com.cll.module_map"
+    const val MODULE_SETTING = "com.cll.module_setting"
+    const val MODULE_VOICE_SETTING = "com.cll.module_voice_setting"
+    const val MODULE_WEATHER = "com.cll.module_weather"
+}

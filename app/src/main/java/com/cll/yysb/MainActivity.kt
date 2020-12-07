@@ -1,12 +1,21 @@
 package com.cll.yysb
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import com.cll.lib_base.base.BaseActivity
+import com.cll.lib_base.helper.ARouterHelper
+import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
+    override fun getLayoutId(): Int = R.layout.activity_main
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    override fun getTitleText(): String = " Main "
+
+    override fun isShowBack(): Boolean  = false
+
+    override fun initView() {
+        main_button.setOnClickListener {
+            //跨module跳转activity
+            ARouterHelper.startActivity(ARouterHelper.PATH_APP_MANAGER)
+        }
     }
+
 }
